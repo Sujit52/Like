@@ -10,7 +10,7 @@ def send_like(uid):
         print(f"Error for UID {uid}: {e}")
 
 def main():
-    with open('src/uids.txt', 'r') as file:
+    with open('uids.txt', 'r') as file:
         uids = [line.strip() for line in file if line.strip()]
     
     for uid in uids:
