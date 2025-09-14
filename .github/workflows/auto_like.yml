@@ -1,4 +1,3 @@
-
 name: Auto Send Likes
 
 on:
@@ -22,7 +21,18 @@ jobs:
         run: pip install requests
 
       - name: Run like script
-        run: python like_script.py
+        run: |
+      
+          python like_script.py
 
-      - name: Show logs
-        run: cat uids.txt && echo "API calls completed!"
+      - name: Upload log file
+        uses: actions/upload-artifact@v3
+        with:
+          name: like-results
+          path: like_results.log
+
+      - name: Show summary
+        run: |
+        
+          echo "=== FINAL RESULTS ==="
+          cat like_results.log || echo "No log file found"
