@@ -22,7 +22,7 @@ jobs:
         run: pip install requests
 
       - name: Run like script
-        run: python src/like_script.py
+        run: python like_script.py
 
       - name: Show logs
-        run: cat src/uids.txt && echo "API calls completed!"
+        run: cat uids.txt && echo "API calls completed!"
