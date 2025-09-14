@@ -1,1 +1,28 @@
 
+name: Auto Send Likes
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # Run daily at 00:00 UTC
+  workflow_dispatch:       # Manual run
+
+jobs:
+  send-likes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run like script
+        run: python src/like_script.py
+
+      - name: Show logs
+        run: cat src/uids.txt && echo "API calls completed!"
